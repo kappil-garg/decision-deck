@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DecisionDesk | AI Decision Assistant</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>DecisionDesk</h1>
+      <p class="subtitle">Your AI-powered objective decision assistant</p>
+    </header>
+
+    <main>
+      <div class="card">
+        <div class="form-group">
+          <label for="decisionInput">What decision are you trying to make?</label>
+          <textarea id="decisionInput"
+            placeholder="e.g., Should I switch to a remote-first job or stay in my current office-based role?"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="optionsInput">Options (comma separated, optional)</label>
+          <input type="text" id="optionsInput" placeholder="e.g., Remote Job, Current Office Job, Hybrid Freelancing">
+        </div>
+
+        <div class="form-group">
+          <label for="constraintsInput">Constraints (budget, time, risk, etc., optional)</label>
+          <input type="text" id="constraintsInput"
+            placeholder="e.g., Must maintain current salary, Need to start within 30 days">
+        </div>
+
+        <button id="analyzeBtn" class="btn">Analyze Decision</button>
+
+        <div id="loadingSpinner" class="spinner"></div>
+        <div id="errorMsg" class="error-msg"></div>
+      </div>
+
+      <section id="results" class="card">
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="tab-proscons">Pros & Cons</button>
+          <button class="tab-btn" data-tab="tab-comparison">Comparison</button>
+          <button class="tab-btn" data-tab="tab-swot">SWOT Analysis</button>
+          <button class="tab-btn" data-tab="tab-recommendation">Recommendation</button>
+        </div>
+
+        <div id="tab-proscons" class="tab-content active">
+          <div class="pros-cons">
+            <div class="pros">
+              <h4>Pros</h4>
+              <ul id="prosList"></ul>
+            </div>
+            <div class="cons">
+              <h4>Cons</h4>
+              <ul id="consList"></ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-comparison" class="tab-content">
+          <div id="tableContainer"></div>
+        </div>
+
+        <div id="tab-swot" class="tab-content">
+          <div class="swot-grid">
+            <div class="swot-item swot-s">
+              <strong>Strengths</strong>
+              <ul id="strengthsList"></ul>
+            </div>
+            <div class="swot-item swot-w">
+              <strong>Weaknesses</strong>
+              <ul id="weaknessesList"></ul>
+            </div>
+            <div class="swot-item swot-o">
+              <strong>Opportunities</strong>
+              <ul id="opportunitiesList"></ul>
+            </div>
+            <div class="swot-item swot-t">
+              <strong>Threats</strong>
+              <ul id="threatsList"></ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="tab-recommendation" class="tab-content">
+          <p id="recText"></p>
+          <div id="confidenceBadge" class="confidence-badge"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer class="app-footer" id="app-footer">
+    <div class="app-footer__inner">
+      Built with Gemini · Refined by <a id="footer-link" href="#" target="_blank" rel="noopener noreferrer"></a>
+    </div>
+  </footer>
+
+  <script type="module" src="/app.js"></script>
+</body>
+
+</html>
